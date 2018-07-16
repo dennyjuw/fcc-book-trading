@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl true --deploy-url /",
+    "start:noreload": "ng serve --ssl true --deploy-url / --live-reload false",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
