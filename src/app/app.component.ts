@@ -16,9 +16,15 @@ interface Book {
 export class AppComponent {
 
   books: Observable<any[]>;
+  loginForm: FormGroup;
   bookForm: FormGroup;
 
   constructor(private db: AngularFireDatabase, private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+
     this.bookForm = this.fb.group({
       title: ['', [Validators.required]],
       author: ['', [Validators.required]]
@@ -27,6 +33,16 @@ export class AppComponent {
 
   ngOnInit() {
     this.books = this.db.list('books').valueChanges();
+  }
+
+  login() {
+    // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // ...
+    // });
+
   }
 
   submitBookForm(): void {

@@ -2,6 +2,22 @@
   Firebase
 </h1>
 
+<div>
+  <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()" novalidate autocomplete="off">
+    <div>
+      <label>Username</label>
+      <input placeholder="username" formControlName="username">
+    </div>
+    <div>
+      <label>Password</label>
+      <input placeholder="password" formControlName="password">
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+
+
 <ul *ngFor="let book of books | async">
   <li>
     <strong>{{ book.title}}</strong>
