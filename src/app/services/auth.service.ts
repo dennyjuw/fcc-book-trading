@@ -12,12 +12,6 @@ export class AuthService {
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
-    // this.user.subscribe(
-    //   user => {
-    //     this.userDetails = user ? user : null;
-    //     console.log(this.userDetails)
-    //   }
-    // )
   }
 
   getAuthInfo(): Observable<any> {

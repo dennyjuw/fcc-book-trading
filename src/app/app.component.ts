@@ -35,16 +35,6 @@ export class AppComponent {
     this.books = this.db.list('books').valueChanges();
   }
 
-  login() {
-    // firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // ...
-    // });
-
-  }
-
   submitBookForm(): void {
     const newBook = this.db.list('books');
     const newTitle = this.bookForm.get('title').value;

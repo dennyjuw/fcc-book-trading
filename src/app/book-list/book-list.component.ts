@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-book-list',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookListComponent implements OnInit {
 
-  constructor() { }
+  books: Observable<any[]>;
+  loginForm: FormGroup;
+  bookForm: FormGroup;
+
+  constructor(private db: AngularFireDatabase, private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+
+    this.bookForm = this.fb.group({
+      title: ['', [Validators.required]],
+      author: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit() {
+    this.books = this.db.list('books').valueChanges();
+  }
+
+  submitBookForm(): void {
+    const newBook = this.db.list('books');
+    const newTitle = this.bookForm.get('title').value;
+    const newAuthor = this.bookForm.get('author').value;
+
+    newBook.push({ title: newTitle, author: newAuthor });
   }
 
 }
