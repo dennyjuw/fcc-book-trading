@@ -12,18 +12,26 @@ export class AuthService {
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
+    // this.user.subscribe(
+    //   user => {
+    //     this.userDetails = user ? user : null;
+    //     console.log(this.userDetails)
+    //   }
+    // )
+  }
 
-    this.user.subscribe(
-      user => {
-        if (user) {
-          this.userDetails = user;
-          console.log('AuthService', this.userDetails);
+  getAuthInfo(): Observable<any> {
+    return new Observable(observer => {
+      return this.user.subscribe(
+        user => {
+          this.userDetails = user ? user : null;
+          observer.next(this.userDetails);
+        },
+        err => {
+          observer.error(err);
         }
-        else {
-          this.userDetails = null;
-        }
-      }
-    )
+      )
+    });
   }
 
   isLoggedIn() {

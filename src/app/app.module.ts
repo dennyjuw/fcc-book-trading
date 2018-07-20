@@ -14,12 +14,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
+import { BookListComponent } from './book-list/book-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,

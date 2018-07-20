@@ -3,7 +3,8 @@
 </p>
 
 <ul>
-  <li><a (click)="authService.logout()">Logout</a></li>
+  <li><a [routerLink]="['/booklist']">Booklist</a></li>
+  <li><a href="javascript:;" (click)="authService.logout()">Logout</a></li>
 </ul>
 
 <!--

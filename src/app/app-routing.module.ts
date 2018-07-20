@@ -4,12 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BookListComponent } from './book-list/book-list.component';
 import { AuthGuard } from './auth.guard'
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
+  { path: 'booklist', component: BookListComponent, canActivate: [ AuthGuard ] }
 ];
 
 @NgModule({
